@@ -1,12 +1,12 @@
-const:
-  jwt:
+jwt-const:
     issuer: green@green.kr #?? ???
     secret: secretKeysecretKeysecretKeysecretKeysecretKeysecretKeysecretKeysecretKeysecretKeysecretKey
     header-schema-name: Authorization
     token-type: Bearer
-    access-token-expiry: 600_000 #10?
-    refresh-token-expiry: 1_296_000_000 #15?
+    access-token-expiry: 600_000 #10?(MS-millisecond)
+    refresh-token-expiry: 1_296_000_000 #15?(MS)
     refresh-token-cookie-name: refresh-token
+    refresh-token-cookie-expiry: 1_296_000 #15?(S-second)
 
 mybatis:
   mapper-locations: mappers/**/*.xml
