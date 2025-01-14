@@ -2,6 +2,8 @@ jwt-const:
     issuer: green@green.kr #?? ???
     secret: secretKeysecretKeysecretKeysecretKeysecretKeysecretKeysecretKeysecretKeysecretKeysecretKey
     header-schema-name: Authorization
+    claim-key: signedUser
+    token-name: JWT
     token-type: Bearer
     access-token-expiry: 600_000 #10?(MS-millisecond)
     refresh-token-expiry: 1_296_000_000 #15?(MS)
