@@ -16,9 +16,10 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("sign-up")
-    public int signUp(@RequestBody UserSignUpReq req) {
+    public long signUp(@RequestBody UserSignUpReq req) {
         log.info("Sign up request: {}", req);
-        return 0;
+        userService.SignUp(req);
+        return req.getId();
     }
 
 }
