@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionTemplate;
 
 @Slf4j
 @Service
@@ -13,12 +14,19 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
     private final UserMapper userMapper;
     private final PasswordEncoder passwordEncoder;
+    private final TransactionTemplate transactionTemplate; //DI
 
-    @Transactional
     public void SignUp(UserSignUpReq req) {
         String hashedPw = passwordEncoder.encode(req.getPw());
         req.setPw(hashedPw);
-        userMapper.insUser(req);
-        userMapper.insUserRole(req);
+
+        // 부분 transaction
+        transactionTemplate.execute(status -> {
+            userMapper.insUser(req);
+            userMapper.insUserRole(req);
+            return null;
+        });
     }
+
+
 }

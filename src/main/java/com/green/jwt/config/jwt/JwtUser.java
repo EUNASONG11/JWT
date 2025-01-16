@@ -26,7 +26,7 @@ public class JwtUser  implements UserDetails {
 
 
     // 리턴 타입이 collection인데 collection에 방 하나하나의 타입은 <> 지정을 한다.
-    // <?> fh gkaus Object가 되기 때문에 모든 타입이 허용이 된다.
+    // <?> 로 하면 Object가 되기 때문에 모든 타입이 허용이 된다.
     // <? extends GrantedAuthority>는 지정 타입이 꼭 GrantedAuthority 포함, GrantedAuthority를 상속 받은 객체만 가능하도록 제한을 거는 것
 
     // <? super GrantedAuthority>는 지정 타입이 꼭 GrantedAuthority 포함, GrantedAuthority의 부모 객체만 가능하도록 제한을 거는 것
