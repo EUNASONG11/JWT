@@ -18,4 +18,24 @@
             (#{id}, #{item})
         </foreach>
     </insert>
+
+    <resultMap id="selUserWithRolesResultMap" type="com.green.jwt.user.model.UserSelOne">
+        <id property="id" column="id"/> <!-- 앞의 id는 멤버필드, 뒤의 id는 컬럼명-->
+        <result property="email" column="email"/>
+        <result property="pw" column="pw"/>
+        <result property="name" column="name"/>
+        <collection property="roles" resultMap="selRolesResultMap"/>
+    </resultMap>
+
+    <resultMap id="selRolesResultMap" type="String">
+        <id property="role" column="role"/>
+    </resultMap>
+
+    <select id="selUserWithRoles" resultMap="selUserWithRolesResultMap">
+        SELECT A.id, A.email, A.pw, A.NAME, B.ROLE
+          FROM user A
+         INNER JOIN user_role B
+            ON A.id = B.user_id
+         WHERE A.email = #{email}
+    </select>
 </mapper>

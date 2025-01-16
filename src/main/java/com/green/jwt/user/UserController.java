@@ -1,6 +1,9 @@
 package com.green.jwt.user;
 
+import com.green.jwt.user.model.UserSignInReq;
+import com.green.jwt.user.model.UserSignInRes;
 import com.green.jwt.user.model.UserSignUpReq;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +23,12 @@ public class UserController {
         log.info("Sign up request: {}", req);
         userService.SignUp(req);
         return req.getId();
+    }
+
+    @PostMapping("sign-in")
+    public UserSignInRes signIn(@RequestBody UserSignInReq req, HttpServletResponse response) {
+        log.info("Sign in request: {}", req);
+        return userService.signIn(req, response);
     }
 
 }
