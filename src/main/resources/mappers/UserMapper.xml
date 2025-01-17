@@ -27,7 +27,7 @@
         <collection property="roles" resultMap="selRolesResultMap"/>
     </resultMap>
 
-    <resultMap id="selRolesResultMap" type="String">
+    <resultMap id="selRolesResultMap" type="com.green.jwt.config.jwt.UserRole">
         <id property="role" column="role"/>
     </resultMap>
 
