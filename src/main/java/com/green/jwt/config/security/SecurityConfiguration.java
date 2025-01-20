@@ -27,6 +27,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(req ->
                                      req.requestMatchers("api/admin").hasRole(UserRole.ADMIN.name()) //인가 하나 처리
                                         .requestMatchers("api/mentor").hasRole(UserRole.MENTOR.name())
+                                        .requestMatchers(HttpMethod.GET, "/api/user").hasRole(UserRole.USER.name())
                                         .requestMatchers("api/admin-mentor").hasAnyRole(UserRole.ADMIN.name(), UserRole.MENTOR.name()) //인가 여러 개 처리
                                         .requestMatchers("/api/admin", "/api/mentor", "/api/admin-mentor", "/api/user").authenticated()
 
