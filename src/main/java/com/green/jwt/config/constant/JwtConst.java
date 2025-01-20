@@ -1,4 +1,4 @@
-package com.green.jwt.config;
+package com.green.jwt.config.constant;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
